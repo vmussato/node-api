@@ -10,26 +10,7 @@ let port = 3001;
 
 app.use(bodyParser.json());
 
-app.get('/hello', (req, res) => {
-    res.json({result:'Hello World'})
-})
-
-app.post('/hello/:foo/:bar', (req, res) => {
-    res.json({
-        result: 'Hello World',
-        data: [
-            req.params.foo,
-            req.params.bar
-        ]
-    })
-})
-
-app.post('/hello', (req, res) => {
-    res.json({
-        result:'post was sent',
-        data: req.body
-    })
-})
+app.use(require('./routes'));
 
 app.listen(port, (err) => {
     console.log(`listening on ${port}`);
